@@ -1,2 +1,2 @@
-# react-qts
+# React-QTS
 Display Quotes through API
