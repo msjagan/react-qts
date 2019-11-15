@@ -96,20 +96,19 @@ const HomePage = (props) => {
     	   <Quotes quotes={quotes}/>
         </div>
     </div>
-     <Autocomplete className="form-control" styles={styles.searchBar}
-  getItemValue={(item) => item.label}
-  items={authorList}
-  renderItem={(item, isHighlighted) =>
-    <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-      {item.label}
-    </div>
-  }
-  value={authorName}
-  onChange={(e) => setAuthorName(e.target.value)}
-  onSelect={(val) => setAuthorName(val)}
-/>
+    <Autocomplete className="form-control" styles={styles.searchBar}
+          getItemValue={(item) => item.label}
+          items={authorList}
+          renderItem={(item, isHighlighted) =>
+            <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+              {item.label}
+            </div>
+          }
+          value={authorName}
+          onChange={(e) => setAuthorName(e.target.value)}
+          onSelect={(val) => setAuthorName(val)}
+    />
     </>
-
   )
 }
 
