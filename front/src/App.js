@@ -2,6 +2,7 @@ import React from 'react';
 import  { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Test from './pages/Test';
+import Form from './pages/FormPage';
 import NavBar from './NavBar';
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Switch>
         <Route path="/" component={HomePage} exact/>  
         <Route path="/test" component={Test} exact/>  
+        <Route path="/form" component={Form} exact/>  
       </Switch>
     </Router>
   );

@@ -20,6 +20,7 @@ const NavBar = (props) => {
     <Nav className="mr-auto">
       <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
       <Nav.Link as={NavLink} to="/test" exact>About</Nav.Link>
+      <Nav.Link as={NavLink} to="/form" exact>Form</Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
