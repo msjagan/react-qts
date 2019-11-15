@@ -1,7 +1,8 @@
 const express = require('express');
-const MongoClient = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 const request = require('request');
 const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
 // Application Variables
 
@@ -99,10 +100,69 @@ app.post('/test', (req, res) => {
 	        }
 		} else {
 			res.send({
-	                count: 0,
-	                results: []
-	            });
+                count: 0,
+                results: []
+            });
 			
 		}
 	});
+});
+
+app.get('/testdb/:name', (req, res) => {
+	let name = req.params.name; 
+	res.status(200).send(name);
+});
+
+app.post('/testdb/', (req, res) => {
+	res.status(200).send('testdb');
+});
+
+
+
+
+app.get('/mongotest', (req, res, next) => {
+
+	const uri = "mongodb+srv://jagancity:2TK17FGCQ8Ve3ers@nodeblog-42zxo.mongodb.net/?retryWrites=true&w=majority";
+	const client = MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+	client.connect(err => {
+		const db = client.db("blog");
+		const articles = db.collection("articles").find();
+		console.log(articles)
+	});
+
+	res.status(200).send("MongoDB");
+	client.close();
+});
+
+
+app.get('/mysql/user', (req, res) => {
+	var con = mysql.createConnection({
+	  host: "localhost",
+	  user: "root",
+	  password: "",
+	  database: "inv"
+	});
+
+	con.connect();
+
+	con.query("SELECT * FROM invoiceservices", (err, result, fields) => {
+		res.status(200).send(JSON.stringify(result))
+  	});
+});
+
+app.post('/mysql/user/new', (req, res) => {
+	const {username} = req.body;
+	var con = mysql.createConnection({
+	  host: "localhost",
+	  user: "root",
+	  password: "",
+	  database: "inv"
+	});
+
+	con.connect();
+
+	con.query("SELECT * FROM invoiceservices", (err, result, fields) => {
+		res.status(200).json({username: username})
+		console.log(username)
+  	});
 });
