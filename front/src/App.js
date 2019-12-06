@@ -1,8 +1,7 @@
 import React from 'react';
 import  { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import Test from './pages/Test';
-import Form from './pages/FormPage';
+import SingleQuote from './pages/SingleQuote';
 import NavBar from './NavBar';
 function App() {
   return (
@@ -10,8 +9,7 @@ function App() {
       <NavBar/>
       <Switch>
         <Route path="/" component={HomePage} exact/>  
-        <Route path="/test" component={Test} exact/>  
-        <Route path="/form" component={Form} exact/>  
+        <Route path="/quotedetail" component={SingleQuote} exact/>  
       </Switch>
     </Router>
   );
